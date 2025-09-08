@@ -3,45 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
+    <title>Charity Water - The Crisis You Don't See</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const donationOptions = document.querySelectorAll('.donation-option input[type="radio"]');
+            donationOptions.forEach(option => {
+                option.addEventListener('change', () => {
+                    // This handles the visual selection, as radio buttons handle the actual selection state
+                    donationOptions.forEach(opt => opt.parentElement.classList.remove('selected'));
+                    if (option.checked) {
+                        option.parentElement.classList.add('selected');
+                    }
+                });
+            });
+
+            // Optional: Handle monthly input focus/blur for styling if needed
+            const monthlyInput = document.getElementById('monthly-amount');
+            if (monthlyInput) {
+                monthlyInput.addEventListener('focus', () => {
+                    // Remove selected state from fixed options if monthly is being used
+                    donationOptions.forEach(opt => opt.parentElement.classList.remove('selected'));
+                });
+            }
+        });
+    </script>
+    <style>
+        /* This is the new style to use your image as the background */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/hero1.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(60%); /* Darkens the image for text readability */
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
+    <div class="container">
+        <header>
+          <img src="img/cw_logo-2.png"img>
+            <nav>
+                <a href="/taking-action" aria-label="Learn about our projects and how we're taking action">Taking Action ></a>
+                <a href="/history" aria-label="Explore the history of Charity Water">History ></a>
+                <a href="/our-story" aria-label="Read our full story and mission">Our Story ></a>
+            </nav>
+        </header>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
+        <section class="hero-section">
+            <div class="hero-text-overlay">
+                <h1>The Crisis You Don't See</h1>
+                <p>1 in 10 people lack access to clean water</p>
+            </div>
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
-        </div>
-    </section>
+            <form class="donation-form">
+                <h2>Give Once</h2>
+                <div class="donation-options" role="radiogroup" aria-labelledby="give-once-heading">
+                    <h3 id="give-once-heading" class="sr-only">Choose a donation amount</h3>
+                    <label class="donation-option">
+                        <input type="radio" name="donation-amount" value="15" aria-label="Donate 15 dollars"> $15
+                    </label>
+                    <label class="donation-option">
+                        <input type="radio" name="donation-amount" value="20" aria-label="Donate 20 dollars"> $20
+                    </label>
+                    <label class="donation-option">
+                        <input type="radio" name="donation-amount" value="30" aria-label="Donate 30 dollars"> $30
+                    </label>
+                </div>
+                <button type="submit" class="give-button">Sign in to give...</button>
+                <div class="monthly-donation">
+                    <label for="monthly-amount">Monthly</label>
+                    <input type="number" id="monthly-amount" name="monthly-amount" placeholder="$" min="1" aria-label="Enter custom monthly donation amount">
+                </div>
+            </form>
+        </section>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+        <section class="real-story">
+            <div class="story-content">
+                <img src="img/impact.png" alt="A woman carrying a jerrycan of clean water" class="story-image">
+                <div class="story-text">
+                    <h2>Our Impact</h2>
+                    <p>We work with carefully-chosen local partner organizations to bring clean water to remote areas with the greatest needs and most vulnerable populations. We collaborate on planning, implementation, and post-implementation.</p>
+                    <p>Once construction is complete, you'll learn where your donation went and who you helped. As you continue to give, your personalized map will grow with pins that mark each project you helped support.</p>
+                    <p class="story-link-text">Read more stories ></p>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
