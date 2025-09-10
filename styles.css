@@ -36,7 +36,7 @@ header {
 
 nav a {
     color: var(--color-blue);
-    text-decoration: none;
+    text-decoration: outline;
     margin-left: 20px;
     font-weight: bold;
     transition: color 0.3s ease, outline 0.3s ease;
@@ -304,4 +304,38 @@ nav a:focus {
         align-items: flex-start;
         gap: 40px;
     }
+}
+/* New Contact Section Styles */
+.contact-info {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.contact-box {
+    background-color: var(--color-blue);
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.contact-box h3 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: var(--color-yellow);
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.contact-box p {
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+.contact-box p strong {
+    color: var(--color-yellow);
 }
